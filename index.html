@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Uma mensagem especial de amor para alguém especial">
+    <title>Para você ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 30% 50%, #ff6b8f 0%, #ff4b6e 30%, #d63384 60%, #1a0f2e 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hearts {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Efeitos de partículas de brilho */
+        .particles {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 182, 193, 0.4));
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Orbes de luz de fundo */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+            animation: orb-float 15s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #ff6b9d, transparent);
+            top: -200px;
+            left: -200px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ff4b6e, transparent);
+            bottom: -150px;
+            right: -150px;
+            animation-delay: 2s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #d63384, transparent);
+            top: 50%;
+            right: -175px;
+            animation-delay: 4s;
+        }
+
+        @keyframes orb-float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            33% {
+                transform: translate(30px, -40px);
+            }
+            66% {
+                transform: translate(-30px, 40px);
+            }
+        }
+
+        /* Shimmer effect ao redor do card */
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.3), rgba(255, 75, 110, 0.2), rgba(255, 182, 193, 0.3));
+            border-radius: 24px;
+            z-index: -1;
+            opacity: 0;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Glow dinâmico */
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 182, 193, 0.1), transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(-45deg);
+            animation: floatUp 12s linear infinite;
+            will-change: transform, opacity;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -9px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 9px;
+            top: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(-45deg) scale(0.8);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(-45deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .card {
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+            width: 90%;
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 24px;
+            padding: 24px 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card h1 {
+            font-size: 1.7rem;
+            margin-bottom: 6px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(45deg, #ffb6d9, #ff6b9d, #ff4b6e, #ffb6d9);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .card h2 {
+            font-size: 0.88rem;
+            font-weight: 400;
+            margin-bottom: 12px;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
+
+        .divider {
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff9ecb, transparent);
+            margin: 0 auto 14px;
+            border-radius: 999px;
+        }
+
+        .message p {
+            font-size: 0.87rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            font-weight: 400;
+            opacity: 0.98;
+            transition: all 0.4s ease;
+            padding: 8px 10px;
+            border-radius: 8px;
+        }
+
+        .message p:hover {
+            background: rgba(255, 182, 193, 0.15);
+            transform: translateX(4px);
+            opacity: 1;
+        }
+
+        .message p.highlight {
+            font-weight: 500;
+            color: #ffe6f0;
+            background: rgba(255, 192, 203, 0.15);
+            padding: 10px 14px;
+            border-radius: 12px;
+            border-left: 3px solid #ffb6d9;
+            animation: highlightPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes highlightPulse {
+            0%, 100% {
+                background: rgba(255, 192, 203, 0.15);
+            }
+            50% {
+                background: rgba(255, 192, 203, 0.25);
+            }
+        }
+
+        .footer {
+            margin-top: 18px;
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+
+        .heart-big {
+            font-size: 2rem;
+            margin: 10px 0;
+            animation: heartBeat 1.2s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        .signature {
+            margin-top: 8px;
+            font-style: italic;
+            opacity: 0.95;
+        }
+
+        .signature strong {
+            font-weight: 600;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .btn {
+            margin-top: 11px;
+            display: inline-block;
+            padding: 9px 20px;
+            border-radius: 999px;
+            border: 1.5px solid #ffbfda;
+            color: #ffbfda;
+            font-size: 0.87rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .btn:hover {
+            background: #ffbfda;
+            color: #d63384;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 191, 218, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(255, 191, 218, 0.3);
+        }
+
+        /* Confete */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ffb6d9;
+            pointer-events: none;
+            animation: confetti-fall 3s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Transição suave para o 3D effect */
+        .card {
+            transition: transform 0.05s ease-out;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 20px 16px;
+            }
+            .card h1 {
+                font-size: 1.5rem;
+            }
+            .card h2 {
+                font-size: 0.8rem;
+            }
+            .heart-big {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 18px 14px;
+            }
+            .card h1 {
+                font-size: 1.4rem;
+            }
+            .card h2 {
+                font-size: 0.78rem;
+            }
+            .message p {
+                font-size: 0.82rem;
+                line-height: 1.4;
+            }
+            .heart-big {
+                font-size: 1.7rem;
+            }
+            .btn {
+                padding: 8px 18px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="heart" style="left: 25%; animation-delay: 2s;"></div>
+        <div class="heart" style="left: 40%; animation-delay: 4s;"></div>
+        <div class="heart" style="left: 60%; animation-delay: 1s;"></div>
+        <div class="heart" style="left: 75%; animation-delay: 3s;"></div>
+        <div class="heart" style="left: 90%; animation-delay: 5s;"></div>
+    </div>
+
+    <div class="particles" id="particles"></div>
+
+    <div class="card">
+        <h1>Para você, meu amor</h1>
+        <h2>Escrevi isso pensando em cada detalhe que me faz gostar de você.</h2>
+
+        <div class="divider"></div>
+
+        <div class="message">
+            <p>
+                Eu poderia tentar resumir o que sinto em poucas palavras, mas a verdade é que cada dia ao seu lado
+                me mostra um motivo novo para te admirar.
+            </p>
+            <p>
+                Gosto do seu jeito, das suas manias, do seu sorriso e até dos seus silêncios. Você entrou na minha vida
+                e, sem perceber, virou parte dos meus planos, dos meus pensamentos e dos meus melhores momentos.
+            </p>
+            <p class="highlight">
+                Não sei o que o futuro reserva para nós, mas sei que, hoje, eu escolho você.
+            </p>
+            <p>
+                Obrigado por existir e por deixar eu fazer parte da sua história, nem que seja um pedacinho dela.
+            </p>
+        </div>
+
+        <div class="heart-big">❤️</div>
+
+        <div class="footer">
+            <div class="signature">
+                Com carinho,<br>
+                <strong>Raposa boba</strong>
+            </div>
+
+            <button class="btn" onclick="this.textContent='Fico tão feliz! 😊'; this.disabled=true;">Clique aqui se você sorriu</button>
+        </div>
+    </div>
+
+    <script>
+        // Criar partículas de brilho dinâmicas
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const delay = Math.random() * 3;
+                const duration = 2 + Math.random() * 3;
+                
+                particle.style.left = x + '%';
+                particle.style.top = y + '%';
+                particle.style.animationDelay = delay + 's';
+                particle.style.animationDuration = duration + 's';
+                
+                container.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+
+        // Efeito de mouse ao redor do card
+        const card = document.querySelector('.card');
+        const particles = document.querySelectorAll('.particle');
+        let mouseX = 0;
+        let mouseY = 0;
+        let ticking = false;
+
+        function updateCardPosition() {
+            if (card) {
+                const rect = card.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                const angleX = (mouseY - centerY) * 0.015;
+                const angleY = (mouseX - centerX) * 0.015;
+                
+                card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+            }
+            ticking = false;
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            if (!ticking) {
+                requestAnimationFrame(updateCardPosition);
+                ticking = true;
+            }
+
+            // Partículas atraídas pelo mouse (otimizado)
+            particles.forEach((particle, index) => {
+                if (index % 2 === 0) { // Atualizar apenas metade das partículas por frame
+                    const rect = particle.getBoundingClientRect();
+                    const particleX = rect.left + rect.width / 2;
+                    const particleY = rect.top + rect.height / 2;
+                    
+                    const dx = mouseX - particleX;
+                    const dy = mouseY - particleY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        const angle = Math.atan2(dy, dx);
+                        const force = (100 - distance) / 100;
+                        particle.style.transform = `translate(${Math.cos(angle) * force * 20}px, ${Math.sin(angle) * force * 20}px)`;
+                    } else {
+                        particle.style.transform = 'translate(0, 0)';
+                    }
+                }
+            });
+        });
+
+        document.addEventListener('mouseleave', () => {
+            if (card) {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            }
+            particles.forEach(particle => {
+                particle.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // Confete ao clicar no botão
+        const btn = document.querySelector('.btn');
+        btn.addEventListener('click', function(e) {
+            if (this.textContent !== 'Clique aqui se você sorriu') return;
+            
+            createConfetti(e.clientX, e.clientY);
+        });
+
+        function createConfetti(x, y) {
+            const colors = ['#ffb6d9', '#ff6b9d', '#ff4b6e', '#ffdfef', '#ffbfda'];
+            const confettiCount = 40;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = x + 'px';
+                confetti.style.top = y + 'px';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.transform = `translate(${(Math.random() - 0.5) * 200}px, 0)`;
+                confetti.style.animationDelay = '0s';
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+    </script>
