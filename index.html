@@ -98,6 +98,51 @@
             animation-delay: 4s;
         }
 
+        .orb-4 {
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, #ffb6d9, transparent);
+            top: 10%;
+            left: 50%;
+            animation-delay: 1s;
+        }
+
+        .orb-5 {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, #ff6b9d, transparent);
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 3s;
+        }
+
+        .orb-6 {
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, #ff4b6e, transparent);
+            top: 30%;
+            left: -180px;
+            animation-delay: 1.5s;
+        }
+
+        .orb-7 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ffb6d9, transparent);
+            bottom: 30%;
+            right: 5%;
+            animation-delay: 2.5s;
+        }
+
+        .orb-8 {
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, #d63384, transparent);
+            top: 60%;
+            left: 20%;
+            animation-delay: 3.5s;
+        }
+
         @keyframes orb-float {
             0%, 100% {
                 transform: translate(0, 0);
@@ -230,6 +275,15 @@
             animation: gradientShift 8s ease infinite;
         }
 
+        .card h2 {
+            font-size: 0.88rem;
+            font-weight: 400;
+            margin-bottom: 12px;
+            opacity: 0.95;
+            line-height: 1.4;
+            min-height: 2.8em;
+        }
+
         @keyframes gradientShift {
             0% {
                 background-position: 0% 50%;
@@ -240,14 +294,6 @@
             100% {
                 background-position: 0% 50%;
             }
-        }
-
-        .card h2 {
-            font-size: 0.88rem;
-            font-weight: 400;
-            margin-bottom: 12px;
-            opacity: 0.95;
-            line-height: 1.4;
         }
 
         .divider {
@@ -263,10 +309,16 @@
             line-height: 1.5;
             margin-bottom: 8px;
             font-weight: 400;
-            opacity: 0.98;
+            opacity: 0;
             transition: all 0.4s ease;
             padding: 8px 10px;
             border-radius: 8px;
+            transform: translateY(20px);
+        }
+
+        .message p.visible {
+            opacity: 0.98;
+            transform: translateY(0);
         }
 
         .message p:hover {
@@ -343,6 +395,7 @@
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             cursor: pointer;
             background: transparent;
+            margin: 8px 6px;
         }
 
         .btn:hover {
@@ -355,6 +408,27 @@
         .btn:active {
             transform: translateY(0);
             box-shadow: 0 4px 12px rgba(255, 191, 218, 0.3);
+        }
+
+        .btn-no {
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .btn-yes {
+            background: rgba(255, 191, 218, 0.2);
+        }
+
+        .question-section {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 191, 218, 0.2);
+        }
+
+        .question-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: #ffe6f0;
         }
 
         /* Confete */
@@ -425,19 +499,28 @@
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
         <div class="orb orb-3"></div>
-        <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="orb orb-4"></div>
+        <div class="orb orb-5"></div>
+        <div class="orb orb-6"></div>
+        <div class="orb orb-7"></div>
+        <div class="orb orb-8"></div>
+        <div class="heart" style="left: 5%; animation-delay: 0s;"></div>
+        <div class="heart" style="left: 15%; animation-delay: 1s;"></div>
         <div class="heart" style="left: 25%; animation-delay: 2s;"></div>
-        <div class="heart" style="left: 40%; animation-delay: 4s;"></div>
-        <div class="heart" style="left: 60%; animation-delay: 1s;"></div>
-        <div class="heart" style="left: 75%; animation-delay: 3s;"></div>
-        <div class="heart" style="left: 90%; animation-delay: 5s;"></div>
+        <div class="heart" style="left: 35%; animation-delay: 3s;"></div>
+        <div class="heart" style="left: 45%; animation-delay: 0.5s;"></div>
+        <div class="heart" style="left: 55%; animation-delay: 1.5s;"></div>
+        <div class="heart" style="left: 65%; animation-delay: 2.5s;"></div>
+        <div class="heart" style="left: 75%; animation-delay: 3.5s;"></div>
+        <div class="heart" style="left: 85%; animation-delay: 0.8s;"></div>
+        <div class="heart" style="left: 95%; animation-delay: 1.8s;"></div>
     </div>
 
     <div class="particles" id="particles"></div>
 
     <div class="card">
         <h1>Para você, meu amor</h1>
-        <h2>Escrevi isso pensando em cada detalhe que me faz gostar de você.</h2>
+        <h2 id="subtitle"></h2>
 
         <div class="divider"></div>
 
@@ -466,7 +549,16 @@
                 <strong>Raposa boba</strong>
             </div>
 
-            <button class="btn" onclick="this.textContent='Fico tão feliz! 😊'; this.disabled=true;">Clique aqui se você sorriu</button>
+            <div class="question-section" id="questionSection" style="display: none;">
+                <h3>Você me ama? 💕</h3>
+                <div>
+                    <button class="btn btn-yes" id="btnYes">Sim! ❤️</button>
+                    <button class="btn btn-no" id="btnNo">Não</button>
+                </div>
+                <div id="response" style="margin-top: 12px; font-size: 0.9rem; color: #ffe6f0;"></div>
+            </div>
+
+            <button class="btn" id="mainBtn" onclick="showQuestion()">Clique aqui se você sorriu</button>
         </div>
     </div>
 
@@ -495,6 +587,39 @@
         }
         
         createParticles();
+
+        // Efeito de digitação no subtítulo
+        const text = "Escrevi isso pensando em cada detalhe que me faz gostar de você.";
+        const subtitle = document.getElementById('subtitle');
+        let index = 0;
+
+        function typeWriter() {
+            if (index < text.length) {
+                subtitle.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        setTimeout(typeWriter, 500);
+
+        // Scroll reveal para parágrafos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.message p').forEach(p => {
+            observer.observe(p);
+        });
 
         // Efeito de mouse ao redor do card
         const card = document.querySelector('.card');
@@ -583,4 +708,61 @@
                 setTimeout(() => confetti.remove(), 3000);
             }
         }
+
+        // Função para mostrar pergunta
+        function showQuestion() {
+            const mainBtn = document.getElementById('mainBtn');
+            const questionSection = document.getElementById('questionSection');
+            
+            mainBtn.style.display = 'none';
+            questionSection.style.display = 'block';
+            
+            createConfetti(window.innerWidth / 2, window.innerHeight / 2);
+        }
+
+        // Pegadinha do botão "Não"
+        const btnNo = document.getElementById('btnNo');
+        const btnYes = document.getElementById('btnYes');
+        let noClickCount = 0;
+
+        btnNo.addEventListener('mouseenter', () => {
+            // Movimento apenas horizontal para não sair da tela
+            const directions = [-1, 1];
+            const direction = directions[Math.floor(Math.random() * directions.length)];
+            const distance = 100 + Math.random() * 100; // Entre 100px e 200px
+            
+            const newX = direction * distance;
+            
+            btnNo.style.transform = `translateX(${newX}px)`;
+            
+            // Resetar posição após um tempo
+            setTimeout(() => {
+                btnNo.style.transform = 'translateX(0)';
+            }, 800);
+        });
+
+        btnNo.addEventListener('click', () => {
+            noClickCount++;
+            const response = document.getElementById('response');
+            
+            if (noClickCount === 1) {
+                response.textContent = '😢 Tem certeza? Tenta de novo...';
+            } else if (noClickCount === 2) {
+                response.textContent = '🥺 Por favor, escolhe o sim...';
+            } else if (noClickCount >= 3) {
+                btnNo.textContent = 'Sim! ❤️';
+                btnNo.classList.remove('btn-no');
+                btnNo.classList.add('btn-yes');
+                response.textContent = '😊 Sabia que você ia escolher o certo!';
+                setTimeout(() => {
+                    createConfetti(window.innerWidth / 2, window.innerHeight / 2);
+                }, 300);
+            }
+        });
+
+        btnYes.addEventListener('click', () => {
+            const response = document.getElementById('response');
+            response.textContent = '💕 Eu também Te Amo! 😊';
+            createConfetti(window.innerWidth / 2, window.innerHeight / 2);
+        });
     </script>
