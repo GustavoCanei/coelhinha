@@ -484,11 +484,20 @@
         order: 1;
       }
 
-      .question-section {
-        margin-top: 20px;
-        padding-top: 18px;
-        border-top: 1px solid rgba(255, 191, 218, 0.2);
-        position: relative;
+      @keyframes buttonPulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 8px 20px rgba(255, 191, 218, 0.4);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 12px 30px rgba(255, 191, 218, 0.6);
+        }
+      }
+
+      .btn#mainBtn {
+        animation: buttonPulse 2s ease-in-out infinite;
       }
 
       .question-section h3 {
