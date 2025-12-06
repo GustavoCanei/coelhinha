@@ -776,20 +776,31 @@
       createParticles();
 
       // Criar "sem assédio" flutuantes
+      let assedioCount = 0;
+      const maxAssedio = 6;
+
       function createSemAssedio() {
+        // Se já tem muitos, espera um pouco
+        if (assedioCount >= maxAssedio) {
+          setTimeout(createSemAssedio, 1000);
+          return;
+        }
+
         const container = document.body;
-        const count = 5;
+        const count = 2; // Criar apenas 2 por vez
 
         for (let i = 0; i < count; i++) {
+          if (assedioCount >= maxAssedio) break;
+
           const assedio = document.createElement("div");
           assedio.className = "sem-assedio";
           assedio.textContent = "*sem assédio";
 
           const x = Math.random() * window.innerWidth;
-          const y = Math.random() * (window.innerHeight * 0.7); // Aparecer em qualquer altura até 70% da tela
-          const delay = Math.random() * 8;
-          const duration = 6 + Math.random() * 4;
-          const moveX = (Math.random() - 0.5) * 100; // Movimento horizontal aleatório
+          const y = Math.random() * (window.innerHeight * 0.7);
+          const delay = Math.random() * 2; // Delay menor
+          const duration = 4 + Math.random() * 2; // Duração menor
+          const moveX = (Math.random() - 0.5) * 100;
 
           assedio.style.left = x + "px";
           assedio.style.top = y + "px";
@@ -798,12 +809,14 @@
           assedio.style.setProperty("--moveX", moveX + "px");
 
           container.appendChild(assedio);
+          assedioCount++;
 
           // Remover após a animação
           setTimeout(() => {
             assedio.remove();
-            // Criar novo
-            setTimeout(createSemAssedio, 0);
+            assedioCount--;
+            // Criar novo após um pequeno delay
+            setTimeout(createSemAssedio, 800);
           }, (delay + duration) * 1000);
         }
       }
