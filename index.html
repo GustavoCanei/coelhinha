@@ -456,8 +456,15 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                min-height: 100vh;
+            }
+
             .card {
                 padding: 20px 16px;
+                max-width: 100%;
+                width: 100%;
             }
             .card h1 {
                 font-size: 1.5rem;
@@ -468,28 +475,104 @@
             .heart-big {
                 font-size: 1.8rem;
             }
+
+            .orb {
+                width: 200px !important;
+                height: 200px !important;
+            }
+            .orb-1 { top: -100px !important; left: -100px !important; }
+            .orb-2 { bottom: -100px !important; right: -100px !important; }
+            .orb-3 { right: -100px !important; }
+            .orb-4 { left: 50% !important; }
+            .orb-5 { bottom: 20% !important; left: 5% !important; }
+            .orb-6 { left: -100px !important; }
+            .orb-7 { right: 0 !important; }
+            .orb-8 { left: 10% !important; }
         }
 
         @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+
             .card {
                 padding: 18px 14px;
+                max-width: 100%;
+                width: 100%;
+                margin: 0 auto;
             }
             .card h1 {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
+                margin-bottom: 4px;
             }
             .card h2 {
-                font-size: 0.78rem;
+                font-size: 0.75rem;
+                min-height: auto;
             }
             .message p {
-                font-size: 0.82rem;
+                font-size: 0.8rem;
                 line-height: 1.4;
+                padding: 6px 8px;
+                margin-bottom: 6px;
+            }
+            .message p.highlight {
+                padding: 8px 10px;
+                font-size: 0.8rem;
             }
             .heart-big {
-                font-size: 1.7rem;
+                font-size: 1.6rem;
+                margin: 8px 0;
             }
             .btn {
-                padding: 8px 18px;
-                font-size: 0.8rem;
+                padding: 7px 16px;
+                font-size: 0.75rem;
+                margin: 6px 4px;
+                border-radius: 20px;
+            }
+            .divider {
+                width: 40px;
+                margin: 0 auto 10px;
+            }
+            .question-section h3 {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+            .signature {
+                margin-top: 6px;
+                font-size: 0.85rem;
+            }
+            .signature strong {
+                margin-top: 2px;
+            }
+            .footer {
+                margin-top: 14px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .card {
+                padding: 16px 12px;
+            }
+            .card h1 {
+                font-size: 1.2rem;
+            }
+            .card h2 {
+                font-size: 0.72rem;
+                line-height: 1.3;
+            }
+            .message p {
+                font-size: 0.75rem;
+                line-height: 1.35;
+                padding: 5px 6px;
+            }
+            .btn {
+                padding: 6px 14px;
+                font-size: 0.7rem;
+                margin: 4px 3px;
+            }
+            .heart-big {
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -642,45 +725,53 @@
             ticking = false;
         }
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+        // Desabilitar efeito 3D em dispositivos móveis
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
-            if (!ticking) {
-                requestAnimationFrame(updateCardPosition);
-                ticking = true;
-            }
+        if (!isMobile) {
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
 
-            // Partículas atraídas pelo mouse (otimizado)
-            particles.forEach((particle, index) => {
-                if (index % 2 === 0) { // Atualizar apenas metade das partículas por frame
-                    const rect = particle.getBoundingClientRect();
-                    const particleX = rect.left + rect.width / 2;
-                    const particleY = rect.top + rect.height / 2;
-                    
-                    const dx = mouseX - particleX;
-                    const dy = mouseY - particleY;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 100) {
-                        const angle = Math.atan2(dy, dx);
-                        const force = (100 - distance) / 100;
-                        particle.style.transform = `translate(${Math.cos(angle) * force * 20}px, ${Math.sin(angle) * force * 20}px)`;
-                    } else {
-                        particle.style.transform = 'translate(0, 0)';
-                    }
+                if (!ticking) {
+                    requestAnimationFrame(updateCardPosition);
+                    ticking = true;
                 }
-            });
-        });
 
-        document.addEventListener('mouseleave', () => {
-            if (card) {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-            }
-            particles.forEach(particle => {
-                particle.style.transform = 'translate(0, 0)';
+                // Partículas atraídas pelo mouse (otimizado)
+                particles.forEach((particle, index) => {
+                    if (index % 2 === 0) { // Atualizar apenas metade das partículas por frame
+                        const rect = particle.getBoundingClientRect();
+                        const particleX = rect.left + rect.width / 2;
+                        const particleY = rect.top + rect.height / 2;
+                        
+                        const dx = mouseX - particleX;
+                        const dy = mouseY - particleY;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 100) {
+                            const angle = Math.atan2(dy, dx);
+                            const force = (100 - distance) / 100;
+                            particle.style.transform = `translate(${Math.cos(angle) * force * 20}px, ${Math.sin(angle) * force * 20}px)`;
+                        } else {
+                            particle.style.transform = 'translate(0, 0)';
+                        }
+                    }
+                });
             });
-        });
+
+            document.addEventListener('mouseleave', () => {
+                if (card) {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+                }
+                particles.forEach(particle => {
+                    particle.style.transform = 'translate(0, 0)';
+                });
+            });
+        } else {
+            // Em mobile, remove o transform perspective do card
+            card.style.transform = 'none';
+        }
 
         // Confete ao clicar no botão
         const btn = document.querySelector('.btn');
