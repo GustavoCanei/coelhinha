@@ -441,18 +441,22 @@
       }
 
       .btn-no {
-        position: relative;
+        position: absolute;
         transition: all 0.2s ease;
+        z-index: -1;
       }
 
       .btn-yes {
         background: rgba(255, 191, 218, 0.2);
+        position: relative;
+        z-index: 1;
       }
 
       .question-section {
         margin-top: 20px;
         padding-top: 18px;
         border-top: 1px solid rgba(255, 191, 218, 0.2);
+        position: relative;
       }
 
       .question-section h3 {
@@ -545,7 +549,7 @@
         }
 
         .card {
-          padding: 18px 14px;
+          padding: 20px 14px;
           max-width: 100%;
           width: 100%;
           margin: 0 auto;
@@ -555,47 +559,62 @@
           margin-bottom: 4px;
         }
         .card h2 {
-          font-size: 0.75rem;
+          font-size: 0.78rem;
           min-height: auto;
+          line-height: 1.3;
         }
         .message p {
-          font-size: 0.8rem;
-          line-height: 1.4;
-          padding: 6px 8px;
-          margin-bottom: 6px;
+          font-size: 0.85rem;
+          line-height: 1.5;
+          padding: 8px 10px;
+          margin-bottom: 10px;
         }
         .message p.highlight {
-          padding: 8px 10px;
-          font-size: 0.8rem;
+          padding: 10px 12px;
+          font-size: 0.85rem;
+          margin: 12px 0;
         }
         .heart-big {
           font-size: 1.6rem;
-          margin: 8px 0;
+          margin: 12px 0;
         }
         .btn {
-          padding: 7px 16px;
-          font-size: 0.75rem;
-          margin: 6px 4px;
+          padding: 10px 18px;
+          font-size: 0.82rem;
+          margin: 8px 6px;
           border-radius: 20px;
+          width: auto;
+          min-width: 110px;
+        }
+        .btn-no {
+          min-width: 110px;
         }
         .divider {
           width: 40px;
-          margin: 0 auto 10px;
+          margin: 0 auto 12px;
         }
         .question-section h3 {
           font-size: 1rem;
-          margin-bottom: 10px;
+          margin-bottom: 14px;
+          font-weight: 600;
+        }
+        .question-section div:first-of-type {
+          display: flex;
+          gap: 10px;
+          justify-content: center;
+          flex-wrap: wrap;
         }
         .signature {
-          margin-top: 6px;
-          font-size: 0.85rem;
-        }
-        .signature strong {
-          margin-top: 2px;
+          margin-top: 8px;
+          font-size: 0.9rem;
         }
         .footer {
-          margin-top: 14px;
-          font-size: 0.85rem;
+          margin-top: 16px;
+          font-size: 0.9rem;
+        }
+        #response {
+          font-size: 0.95rem !important;
+          margin-top: 14px !important;
         }
       }
 
@@ -651,45 +670,37 @@
     <div class="particles" id="particles"></div>
 
     <div class="card">
-        <h1>Para você, coelhinha</h1>
-        <h2 id="subtitle"></h2>      <div class="divider"></div>
+      <h1>Oii coelhinha esperta</h1>
+      <h2 id="subtitle"></h2>
+      <div class="divider"></div>
 
       <div class="message">
         <p>
-          Tem algo especial em você que me surpreendeu. Talvez seja o jeito como
-          você é, aquela forma única de enxergar as coisas que poucos têm.
+          Você me deixa diferente. Seu jeito, a forma como você vê o mundo...
+          tudo isso importa demais.
         </p>
         <p>
-          Conhecer você de repente foi um daqueles momentos que a gente não
-          planeja, mas que muda tudo de alguma forma. Agora você está aqui, nos
-          meus pensamentos e nos meus melhores momentos.
+          Você chegou de repente, sem avisar. E de alguma forma, mudou tudo.
+          Agora você está sempre lá, nos meus pensamentos, nos meus dias.
         </p>
-        <p class="highlight">
-          Não sei bem como explicar, mas sinto que há algo real acontecendo entre
-          a gente.
-        </p>
-        <p>
-          Talvez seja cedo demais para dizer certas coisas, mas queria que você
-          soubesse que você importa para mim. Muito.
-        </p>
+        <p class="highlight">E o que sinto por você é real.</p>
+        <p>Você significa muito pra mim. De verdade.</p>
       </div>
 
       <div class="heart-big">❤️</div>
 
       <div class="footer">
-        <div class="signature">
-          Raposa boba 🦊
-        </div>
+        <div class="signature">Raposa boba 🦊</div>
 
         <div
           class="question-section"
           id="questionSection"
           style="display: none"
         >
-          <h3>Você acha que há algo aqui? 💭</h3>
+          <h3>Sabia que eu te amo? 💕</h3>
           <div>
-            <button class="btn btn-yes" id="btnYes">Acho sim 💕</button>
-            <button class="btn btn-no" id="btnNo">Não sei...</button>
+            <button class="btn btn-yes" id="btnYes">Sabia sim 💕</button>
+            <button class="btn btn-no" id="btnNo">Não...</button>
           </div>
           <div
             id="response"
@@ -730,8 +741,7 @@
       createParticles();
 
       // Efeito de digitação no subtítulo
-      const text =
-        "Aconteceu tão rápido que nem percebi como você entrou na minha vida.";
+      const text = "Tem algo em você que me faz parar e pensar.";
       const subtitle = document.getElementById("subtitle");
       let index = 0;
 
@@ -906,14 +916,14 @@
         const response = document.getElementById("response");
 
         if (noClickCount === 1) {
-          response.textContent = "😊 Pode ser que sim... tenta de novo?";
+          response.textContent = "😔 Mas eu sabia que você sabia...";
         } else if (noClickCount === 2) {
-          response.textContent = "🥰 Eu acho que tem algo aqui...";
+          response.textContent = "🥰 Deixa eu mostrar então...";
         } else if (noClickCount >= 3) {
-          btnNo.textContent = "Acho sim 💕";
+          btnNo.textContent = "Sabia sim 💕";
           btnNo.classList.remove("btn-no");
           btnNo.classList.add("btn-yes");
-          response.textContent = "😊 É mesmo! Que bom... 🦊💕";
+          response.textContent = "😊 Eu sabia que você sabia... 🦊💕";
           setTimeout(() => {
             createConfetti(window.innerWidth / 2, window.innerHeight / 2);
           }, 300);
@@ -922,7 +932,8 @@
 
       btnYes.addEventListener("click", () => {
         const response = document.getElementById("response");
-        response.textContent = "💕 Fico feliz em saber... 🦊";
+        response.innerHTML =
+          '💕 E eu amo você demais mesmoooo 🦊<br><span style="font-size: 0.7rem; opacity: 0.7; margin-top: 6px; display: block;">*sem assédio</span>';
         createConfetti(window.innerWidth / 2, window.innerHeight / 2);
       });
     </script>
