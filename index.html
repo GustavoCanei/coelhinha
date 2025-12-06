@@ -200,6 +200,36 @@
         }
       }
 
+      /* Sem assédio flutuante */
+      .sem-assedio {
+        position: fixed;
+        font-size: 0.7rem;
+        opacity: 0;
+        color: rgba(255, 182, 193, 0.4);
+        pointer-events: none;
+        z-index: 0;
+        animation: floatAssedio 6s ease-in-out infinite;
+        font-weight: 300;
+        letter-spacing: 1px;
+      }
+
+      @keyframes floatAssedio {
+        0% {
+          opacity: 0;
+          transform: translateY(0px) translateX(0px);
+        }
+        25% {
+          opacity: 0.6;
+        }
+        75% {
+          opacity: 0.6;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-150px) translateX(var(--moveX, 30px));
+        }
+      }
+
       /* Glow dinâmico */
       .card::after {
         content: "";
@@ -744,6 +774,41 @@
       }
 
       createParticles();
+
+      // Criar "sem assédio" flutuantes
+      function createSemAssedio() {
+        const container = document.body;
+        const count = 5;
+
+        for (let i = 0; i < count; i++) {
+          const assedio = document.createElement("div");
+          assedio.className = "sem-assedio";
+          assedio.textContent = "*sem assédio";
+
+          const x = Math.random() * window.innerWidth;
+          const y = Math.random() * (window.innerHeight * 0.7); // Aparecer em qualquer altura até 70% da tela
+          const delay = Math.random() * 8;
+          const duration = 6 + Math.random() * 4;
+          const moveX = (Math.random() - 0.5) * 100; // Movimento horizontal aleatório
+
+          assedio.style.left = x + "px";
+          assedio.style.top = y + "px";
+          assedio.style.animationDelay = delay + "s";
+          assedio.style.animationDuration = duration + "s";
+          assedio.style.setProperty("--moveX", moveX + "px");
+
+          container.appendChild(assedio);
+
+          // Remover após a animação
+          setTimeout(() => {
+            assedio.remove();
+            // Criar novo
+            setTimeout(createSemAssedio, 0);
+          }, (delay + duration) * 1000);
+        }
+      }
+
+      createSemAssedio();
 
       // Efeito de digitação no subtítulo
       const text = "Tem algo em você que me faz parar e pensar.";
