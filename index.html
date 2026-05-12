@@ -3,11 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Uma mensagem especial de amor para alguém especial"
-    />
-    <title>Coelhinha 🐰</title>
+    <meta name="description" content="1 mês com você, coelhinha 🐰" />
+    <title>Coelhinha 🐰 — 1 mês</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
       rel="stylesheet"
@@ -36,6 +33,101 @@
         overflow-x: hidden;
       }
 
+      /* ── Intro overlay ── */
+      .intro-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(
+          circle at 50% 50%,
+          #ff4b6e 0%,
+          #d63384 50%,
+          #1a0f2e 100%
+        );
+        animation: introFade 0.8s ease-out 2.8s forwards;
+        pointer-events: none;
+      }
+
+      @keyframes introFade {
+        to {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      .intro-content {
+        text-align: center;
+        animation: introPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+      }
+
+      @keyframes introPop {
+        from {
+          opacity: 0;
+          transform: scale(0.6);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .intro-emoji {
+        font-size: 4rem;
+        margin-bottom: 8px;
+        animation: introSpin 0.8s ease-out 0.4s both;
+      }
+
+      @keyframes introSpin {
+        from { transform: rotate(-20deg) scale(0.8); }
+        to   { transform: rotate(0deg)  scale(1);   }
+      }
+
+      .intro-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, #ffb6d9, #fff, #ffb6d9);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradientShift 2s ease infinite;
+        line-height: 1;
+      }
+
+      .intro-sub {
+        font-size: 1rem;
+        font-weight: 300;
+        opacity: 0.85;
+        margin-top: 6px;
+        letter-spacing: 0.5px;
+      }
+
+      /* ── Counter badge ── */
+      .counter-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 182, 193, 0.2);
+        border: 1px solid rgba(255, 182, 193, 0.4);
+        border-radius: 999px;
+        padding: 5px 14px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #ffe6f0;
+        margin-bottom: 14px;
+        letter-spacing: 0.3px;
+      }
+
+      .counter-badge span {
+        font-weight: 700;
+        font-size: 1rem;
+        color: #ffb6d9;
+      }
+
+      /* ── Floating hearts background ── */
       .hearts {
         position: fixed;
         inset: 0;
@@ -44,7 +136,7 @@
         pointer-events: none;
       }
 
-      /* Efeitos de partículas de brilho */
+      /* ── Particles ── */
       .particles {
         position: fixed;
         inset: 0;
@@ -66,18 +158,11 @@
       }
 
       @keyframes twinkle {
-        0%,
-        100% {
-          opacity: 0.3;
-          transform: scale(0.8);
-        }
-        50% {
-          opacity: 1;
-          transform: scale(1);
-        }
+        0%, 100% { opacity: 0.3; transform: scale(0.8); }
+        50%       { opacity: 1;   transform: scale(1);   }
       }
 
-      /* Orbes de luz de fundo */
+      /* ── Orbs ── */
       .orb {
         position: fixed;
         border-radius: 50%;
@@ -88,210 +173,22 @@
         animation: orb-float 15s ease-in-out infinite;
       }
 
-      .orb-1 {
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, #ff6b9d, transparent);
-        top: -200px;
-        left: -200px;
-        animation-delay: 0s;
-      }
-
-      .orb-2 {
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(circle, #ff4b6e, transparent);
-        bottom: -150px;
-        right: -150px;
-        animation-delay: 2s;
-      }
-
-      .orb-3 {
-        width: 350px;
-        height: 350px;
-        background: radial-gradient(circle, #d63384, transparent);
-        top: 50%;
-        right: -175px;
-        animation-delay: 4s;
-      }
-
-      .orb-4 {
-        width: 280px;
-        height: 280px;
-        background: radial-gradient(circle, #ffb6d9, transparent);
-        top: 10%;
-        left: 50%;
-        animation-delay: 1s;
-      }
-
-      .orb-5 {
-        width: 320px;
-        height: 320px;
-        background: radial-gradient(circle, #ff6b9d, transparent);
-        bottom: 20%;
-        left: 10%;
-        animation-delay: 3s;
-      }
-
-      .orb-6 {
-        width: 360px;
-        height: 360px;
-        background: radial-gradient(circle, #ff4b6e, transparent);
-        top: 30%;
-        left: -180px;
-        animation-delay: 1.5s;
-      }
-
-      .orb-7 {
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(circle, #ffb6d9, transparent);
-        bottom: 30%;
-        right: 5%;
-        animation-delay: 2.5s;
-      }
-
-      .orb-8 {
-        width: 280px;
-        height: 280px;
-        background: radial-gradient(circle, #d63384, transparent);
-        top: 60%;
-        left: 20%;
-        animation-delay: 3.5s;
-      }
+      .orb-1 { width:400px; height:400px; background:radial-gradient(circle,#ff6b9d,transparent); top:-200px; left:-200px; animation-delay:0s; }
+      .orb-2 { width:300px; height:300px; background:radial-gradient(circle,#ff4b6e,transparent); bottom:-150px; right:-150px; animation-delay:2s; }
+      .orb-3 { width:350px; height:350px; background:radial-gradient(circle,#d63384,transparent); top:50%; right:-175px; animation-delay:4s; }
+      .orb-4 { width:280px; height:280px; background:radial-gradient(circle,#ffb6d9,transparent); top:10%; left:50%; animation-delay:1s; }
+      .orb-5 { width:320px; height:320px; background:radial-gradient(circle,#ff6b9d,transparent); bottom:20%; left:10%; animation-delay:3s; }
+      .orb-6 { width:360px; height:360px; background:radial-gradient(circle,#ff4b6e,transparent); top:30%; left:-180px; animation-delay:1.5s; }
+      .orb-7 { width:300px; height:300px; background:radial-gradient(circle,#ffb6d9,transparent); bottom:30%; right:5%; animation-delay:2.5s; }
+      .orb-8 { width:280px; height:280px; background:radial-gradient(circle,#d63384,transparent); top:60%; left:20%; animation-delay:3.5s; }
 
       @keyframes orb-float {
-        0%,
-        100% {
-          transform: translate(0, 0);
-        }
-        33% {
-          transform: translate(30px, -40px);
-        }
-        66% {
-          transform: translate(-30px, 40px);
-        }
+        0%,100% { transform: translate(0,0);        }
+        33%      { transform: translate(30px,-40px); }
+        66%      { transform: translate(-30px,40px); }
       }
 
-      /* Shimmer effect ao redor do card */
-      .card::before {
-        content: "";
-        position: absolute;
-        inset: -2px;
-        background: linear-gradient(
-          45deg,
-          rgba(255, 182, 193, 0.3),
-          rgba(255, 75, 110, 0.2),
-          rgba(255, 182, 193, 0.3)
-        );
-        border-radius: 24px;
-        z-index: -1;
-        opacity: 0;
-        animation: shimmer 3s ease-in-out infinite;
-      }
-
-      @keyframes shimmer {
-        0%,
-        100% {
-          opacity: 0;
-        }
-        50% {
-          opacity: 1;
-        }
-      }
-
-      /* Sem assédio flutuante */
-      .sem-assedio {
-        position: fixed;
-        font-size: 0.7rem;
-        opacity: 0;
-        color: rgba(255, 182, 193, 0.4);
-        pointer-events: none;
-        z-index: 0;
-        animation: floatAssedio 6s ease-in-out infinite;
-        font-weight: 300;
-        letter-spacing: 1px;
-      }
-
-      @keyframes floatAssedio {
-        0% {
-          opacity: 0;
-          transform: translateY(0px) translateX(0px);
-        }
-        25% {
-          opacity: 0.6;
-        }
-        75% {
-          opacity: 0.6;
-        }
-        100% {
-          opacity: 0;
-          transform: translateY(-150px) translateX(var(--moveX, 30px));
-        }
-      }
-
-      /* Glow dinâmico */
-      .card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 24px;
-        background: radial-gradient(
-          circle at 30% 30%,
-          rgba(255, 182, 193, 0.1),
-          transparent 70%
-        );
-        z-index: -1;
-        pointer-events: none;
-      }
-
-      .heart {
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        background: rgba(255, 255, 255, 0.25);
-        transform: rotate(-45deg);
-        animation: floatUp 12s linear infinite;
-        will-change: transform, opacity;
-      }
-
-      .heart::before,
-      .heart::after {
-        content: "";
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        background: rgba(255, 255, 255, 0.25);
-        border-radius: 50%;
-      }
-
-      .heart::before {
-        top: -9px;
-        left: 0;
-      }
-
-      .heart::after {
-        left: 9px;
-        top: 0;
-      }
-
-      @keyframes floatUp {
-        0% {
-          transform: translateY(100vh) rotate(-45deg) scale(0.8);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        90% {
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-10vh) rotate(-45deg) scale(1);
-          opacity: 0;
-        }
-      }
-
+      /* ── Card ── */
       .card {
         position: relative;
         z-index: 2;
@@ -299,25 +196,36 @@
         width: 90%;
         background: rgba(0, 0, 0, 0.35);
         border-radius: 24px;
-        padding: 24px 20px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35),
-          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        padding: 28px 22px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.1);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         text-align: center;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        animation: slideUp 0.6s ease-out;
+        border: 1px solid rgba(255,255,255,0.08);
+        animation: slideUp 0.6s ease-out 3.2s both;
+        transform-style: preserve-3d;
+        will-change: transform;
       }
 
       @keyframes slideUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(30px); }
+        to   { opacity: 1; transform: translateY(0);    }
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background: linear-gradient(45deg, rgba(255,182,193,0.3), rgba(255,75,110,0.2), rgba(255,182,193,0.3));
+        border-radius: 24px;
+        z-index: -1;
+        opacity: 0;
+        animation: shimmer 3s ease-in-out infinite;
+      }
+
+      @keyframes shimmer {
+        0%,100% { opacity: 0; }
+        50%      { opacity: 1; }
       }
 
       .card h1 {
@@ -343,15 +251,9 @@
       }
 
       @keyframes gradientShift {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
+        0%   { background-position: 0%   50%; }
+        50%  { background-position: 100% 50%; }
+        100% { background-position: 0%   50%; }
       }
 
       .divider {
@@ -362,6 +264,7 @@
         border-radius: 999px;
       }
 
+      /* ── Message ── */
       .message p {
         font-size: 0.87rem;
         line-height: 1.5;
@@ -379,134 +282,191 @@
         transform: translateY(0);
       }
 
-      .message p:hover {
-        background: rgba(255, 182, 193, 0.15);
-        transform: translateX(4px);
-        opacity: 1;
-      }
-
       .message p.highlight {
         font-weight: 500;
         color: #ffe6f0;
-        background: rgba(255, 192, 203, 0.15);
+        background: rgba(255,192,203,0.15);
         padding: 10px 14px;
         border-radius: 12px;
         border-left: 3px solid #ffb6d9;
         animation: highlightPulse 2s ease-in-out infinite;
+        text-align: left;
       }
 
       @keyframes highlightPulse {
-        0%,
-        100% {
-          background: rgba(255, 192, 203, 0.15);
-        }
-        50% {
-          background: rgba(255, 192, 203, 0.25);
-        }
+        0%,100% { background: rgba(255,192,203,0.15); }
+        50%     { background: rgba(255,192,203,0.25); }
       }
 
-      .footer {
-        margin-top: 18px;
-        font-size: 0.9rem;
-        opacity: 0.95;
+      /* ── Timeline ── */
+      .timeline {
+        margin: 16px 0 4px;
+        text-align: left;
       }
 
+      .timeline-title {
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        opacity: 0.6;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .timeline-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        margin-bottom: 6px;
+        background: rgba(255,182,193,0.07);
+        border: 1px solid rgba(255,182,193,0.12);
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .timeline-item.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .timeline-icon {
+        font-size: 1.2rem;
+        flex-shrink: 0;
+        line-height: 1.4;
+      }
+
+      .timeline-text {
+        font-size: 0.83rem;
+        line-height: 1.4;
+        opacity: 0.92;
+      }
+
+      /* ── Heart floating ── */
+      .heart {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background: rgba(255,255,255,0.25);
+        transform: rotate(-45deg);
+        animation: floatUp 12s linear infinite;
+        will-change: transform, opacity;
+      }
+
+      .heart::before,
+      .heart::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background: rgba(255,255,255,0.25);
+        border-radius: 50%;
+      }
+
+      .heart::before { top: -9px; left: 0;  }
+      .heart::after  { left: 9px; top: 0;   }
+
+      @keyframes floatUp {
+        0%   { transform: translateY(100vh) rotate(-45deg) scale(0.8); opacity: 0; }
+        10%  { opacity: 1; }
+        90%  { opacity: 1; }
+        100% { transform: translateY(-10vh) rotate(-45deg) scale(1);   opacity: 0; }
+      }
+
+      /* ── Footer / Signature ── */
       .heart-big {
         font-size: 2rem;
-        margin: 10px 0;
+        margin: 14px 0 10px;
         animation: heartBeat 1.2s ease-in-out infinite;
+        display: block;
       }
 
       @keyframes heartBeat {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        25% {
-          transform: scale(1.1);
-        }
-        50% {
-          transform: scale(1);
-        }
+        0%,100% { transform: scale(1);   }
+        25%     { transform: scale(1.1); }
+        50%     { transform: scale(1);   }
       }
+
+      .footer { margin-top: 4px; font-size: 0.9rem; opacity: 0.95; }
 
       .signature {
-        margin-top: 8px;
+        margin-top: 4px;
         font-style: italic;
         opacity: 0.95;
+        margin-bottom: 14px;
       }
 
-      .signature strong {
-        font-weight: 600;
-        display: block;
-        margin-top: 4px;
-      }
-
+      /* ── Buttons ── */
       .btn {
-        margin-top: 11px;
         display: inline-block;
-        padding: 9px 20px;
+        padding: 12px 22px;
         border-radius: 999px;
         border: 1.5px solid #ffbfda;
         color: #ffbfda;
-        font-size: 0.87rem;
+        font-size: 0.9rem;
         font-weight: 500;
         text-decoration: none;
         transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         cursor: pointer;
         background: transparent;
-        margin: 8px 6px;
+        margin: 6px 5px;
+        min-height: 48px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
       }
 
-      .btn:hover {
+      .btn:hover,
+      .btn:active {
         background: #ffbfda;
         color: #d63384;
         transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(255, 191, 218, 0.4);
-      }
-
-      .btn:active {
-        transform: translateY(0);
-        box-shadow: 0 4px 12px rgba(255, 191, 218, 0.3);
+        box-shadow: 0 8px 20px rgba(255,191,218,0.4);
       }
 
       .btn-no {
-        position: relative;
-        transition: all 0.2s ease;
+        transition: all 0.25s ease;
         z-index: -1;
         order: 2;
+        position: relative;
       }
 
       .btn-yes {
-        background: rgba(255, 191, 218, 0.2);
+        background: rgba(255,191,218,0.2);
         position: relative;
         z-index: 1;
         order: 1;
       }
 
       @keyframes buttonPulse {
-        0%,
-        100% {
-          transform: scale(1);
-          box-shadow: 0 8px 20px rgba(255, 191, 218, 0.4);
-        }
-        50% {
-          transform: scale(1.05);
-          box-shadow: 0 12px 30px rgba(255, 191, 218, 0.6);
-        }
+        0%,100% { transform: scale(1);    box-shadow: 0 8px 20px rgba(255,191,218,0.4); }
+        50%     { transform: scale(1.05); box-shadow: 0 12px 30px rgba(255,191,218,0.6); }
       }
 
       .btn#mainBtn {
         animation: buttonPulse 2s ease-in-out infinite;
+        font-size: 0.95rem;
+        padding: 14px 28px;
       }
 
+      /* ── Question section ── */
       .question-section h3 {
-        font-size: 1.1rem;
-        margin-bottom: 12px;
+        font-size: 1.05rem;
+        margin-bottom: 14px;
         color: #ffe6f0;
+        line-height: 1.3;
       }
 
-      /* Confete */
+      .question-section .btn-row {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: nowrap;
+      }
+
+      /* ── Confetti ── */
       .confetti {
         position: fixed;
         width: 10px;
@@ -514,182 +474,124 @@
         background: #ffb6d9;
         pointer-events: none;
         animation: confetti-fall 3s linear forwards;
+        border-radius: 2px;
       }
 
       @keyframes confetti-fall {
-        to {
-          transform: translateY(100vh) rotate(360deg);
-          opacity: 0;
-        }
+        to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
       }
 
-      /* Transição suave para o 3D effect */
-      .card {
-        transition: transform 0.05s ease-out;
-        transform-style: preserve-3d;
-        will-change: transform;
+      /* ── Sem assédio ── */
+      .sem-assedio {
+        position: fixed;
+        font-size: 0.65rem;
+        opacity: 0;
+        color: rgba(255,182,193,0.4);
+        pointer-events: none;
+        z-index: 0;
+        animation: floatAssedio 6s ease-in-out infinite;
+        font-weight: 300;
+        letter-spacing: 1px;
       }
 
+      @keyframes floatAssedio {
+        0%   { opacity: 0; transform: translateY(0px) translateX(0px);                       }
+        25%  { opacity: 0.6; }
+        75%  { opacity: 0.6; }
+        100% { opacity: 0; transform: translateY(-150px) translateX(var(--moveX, 30px));     }
+      }
+
+      /* ── Response text ── */
+      #response {
+        margin-top: 12px;
+        font-size: 0.9rem;
+        color: #ffe6f0;
+        min-height: 1.4em;
+        transition: all 0.3s ease;
+      }
+
+      /* ── Mobile ── */
       @media (max-width: 768px) {
-        body {
-          padding: 10px;
-          min-height: 100vh;
-        }
+        body { padding: 10px; }
 
         .card {
-          padding: 20px 16px;
+          padding: 22px 16px;
           max-width: 100%;
           width: 100%;
         }
-        .card h1 {
-          font-size: 1.5rem;
-        }
-        .card h2 {
-          font-size: 0.8rem;
-        }
-        .heart-big {
-          font-size: 1.8rem;
-        }
 
-        .orb {
-          width: 200px !important;
-          height: 200px !important;
-        }
-        .orb-1 {
-          top: -100px !important;
-          left: -100px !important;
-        }
-        .orb-2 {
-          bottom: -100px !important;
-          right: -100px !important;
-        }
-        .orb-3 {
-          right: -100px !important;
-        }
-        .orb-4 {
-          left: 50% !important;
-        }
-        .orb-5 {
-          bottom: 20% !important;
-          left: 5% !important;
-        }
-        .orb-6 {
-          left: -100px !important;
-        }
-        .orb-7 {
-          right: 0 !important;
-        }
-        .orb-8 {
-          left: 10% !important;
-        }
+        .card h1 { font-size: 1.5rem; }
+        .card h2 { font-size: 0.82rem; }
+        .heart-big { font-size: 1.8rem; }
+        .intro-title { font-size: 2.8rem; }
+        .intro-emoji { font-size: 3.2rem; }
+
+        .orb { width:200px!important; height:200px!important; }
+        .orb-1 { top:-100px!important; left:-100px!important; }
+        .orb-2 { bottom:-100px!important; right:-100px!important; }
+        .orb-3 { right:-100px!important; }
+        .orb-4 { left:50%!important; }
+        .orb-5 { bottom:20%!important; left:5%!important; }
+        .orb-6 { left:-100px!important; }
+        .orb-7 { right:0!important; }
+        .orb-8 { left:10%!important; }
       }
 
       @media (max-width: 480px) {
-        body {
-          padding: 8px;
-        }
+        body { padding: 8px; }
 
         .card {
           padding: 20px 14px;
-          max-width: 100%;
           width: 100%;
           margin: 0 auto;
         }
-        .card h1 {
-          font-size: 1.3rem;
-          margin-bottom: 4px;
-        }
-        .card h2 {
-          font-size: 0.78rem;
-          min-height: auto;
-          line-height: 1.3;
-        }
-        .message p {
-          font-size: 0.85rem;
-          line-height: 1.5;
-          padding: 8px 10px;
-          margin-bottom: 10px;
-        }
-        .message p.highlight {
-          padding: 10px 12px;
-          font-size: 0.85rem;
-          margin: 12px 0;
-        }
-        .heart-big {
-          font-size: 1.6rem;
-          margin: 12px 0;
-        }
+
+        .card h1 { font-size: 1.3rem; }
+        .card h2 { font-size: 0.8rem; min-height: auto; }
+
+        .counter-badge { font-size: 0.78rem; padding: 4px 12px; }
+        .counter-badge span { font-size: 0.95rem; }
+
+        .message p { font-size: 0.84rem; }
+        .message p.highlight { font-size: 0.84rem; padding: 10px 12px; }
+
+        .timeline-text { font-size: 0.8rem; }
+
         .btn {
-          padding: 9px 14px;
-          font-size: 0.78rem;
-          margin: 0;
-          border-radius: 20px;
-          width: auto;
-          min-width: 90px;
-          flex: 0 1 auto;
+          padding: 11px 18px;
+          font-size: 0.85rem;
+          min-height: 48px;
         }
-        .btn-no {
-          min-width: 90px;
-        }
-        .divider {
-          width: 40px;
-          margin: 0 auto 12px;
-        }
-        .question-section h3 {
-          font-size: 1rem;
-          margin-bottom: 14px;
-          font-weight: 600;
-        }
-        .question-section div:first-of-type {
-          display: flex;
-          gap: 12px;
-          justify-content: center;
-          align-items: center;
-          flex-wrap: nowrap;
-          width: 100%;
-        }
-        .signature {
-          margin-top: 8px;
-          font-size: 0.9rem;
-        }
-        .footer {
-          margin-top: 16px;
-          font-size: 0.9rem;
-        }
-        #response {
-          font-size: 0.95rem !important;
-          margin-top: 14px !important;
-        }
+
+        .btn#mainBtn { padding: 13px 24px; font-size: 0.9rem; }
+
+        .question-section h3 { font-size: 0.95rem; }
+
+        .heart-big { font-size: 1.6rem; }
+        .intro-title { font-size: 2.4rem; }
+        .intro-emoji { font-size: 2.8rem; }
+        .intro-sub { font-size: 0.88rem; }
       }
 
       @media (max-width: 360px) {
-        .card {
-          padding: 16px 12px;
-        }
-        .card h1 {
-          font-size: 1.2rem;
-        }
-        .card h2 {
-          font-size: 0.72rem;
-          line-height: 1.3;
-        }
-        .message p {
-          font-size: 0.75rem;
-          line-height: 1.35;
-          padding: 5px 6px;
-        }
-        .btn {
-          padding: 6px 14px;
-          font-size: 0.7rem;
-          margin: 4px 3px;
-        }
-        .heart-big {
-          font-size: 1.4rem;
-        }
+        .card { padding: 16px 12px; }
+        .card h1 { font-size: 1.2rem; }
+        .btn { padding: 10px 14px; font-size: 0.78rem; }
       }
     </style>
   </head>
   <body>
+
+    <!-- ── Intro overlay ── -->
+    <div class="intro-overlay" id="introOverlay">
+      <div class="intro-content">
+        <div class="intro-emoji">🎉</div>
+        <div class="intro-title">1 mês</div>
+        <div class="intro-sub">com você, coelhinha 🐰</div>
+      </div>
+    </div>
+
+    <!-- ── Background ── -->
     <div class="hearts">
       <div class="orb orb-1"></div>
       <div class="orb orb-2"></div>
@@ -699,132 +601,136 @@
       <div class="orb orb-6"></div>
       <div class="orb orb-7"></div>
       <div class="orb orb-8"></div>
-      <div class="heart" style="left: 5%; animation-delay: 0s"></div>
-      <div class="heart" style="left: 15%; animation-delay: 1s"></div>
-      <div class="heart" style="left: 25%; animation-delay: 2s"></div>
-      <div class="heart" style="left: 35%; animation-delay: 3s"></div>
-      <div class="heart" style="left: 45%; animation-delay: 0.5s"></div>
-      <div class="heart" style="left: 55%; animation-delay: 1.5s"></div>
-      <div class="heart" style="left: 65%; animation-delay: 2.5s"></div>
-      <div class="heart" style="left: 75%; animation-delay: 3.5s"></div>
-      <div class="heart" style="left: 85%; animation-delay: 0.8s"></div>
-      <div class="heart" style="left: 95%; animation-delay: 1.8s"></div>
+      <div class="heart" style="left:5%;  animation-delay:0s"></div>
+      <div class="heart" style="left:15%; animation-delay:1s"></div>
+      <div class="heart" style="left:25%; animation-delay:2s"></div>
+      <div class="heart" style="left:35%; animation-delay:3s"></div>
+      <div class="heart" style="left:45%; animation-delay:0.5s"></div>
+      <div class="heart" style="left:55%; animation-delay:1.5s"></div>
+      <div class="heart" style="left:65%; animation-delay:2.5s"></div>
+      <div class="heart" style="left:75%; animation-delay:3.5s"></div>
+      <div class="heart" style="left:85%; animation-delay:0.8s"></div>
+      <div class="heart" style="left:95%; animation-delay:1.8s"></div>
     </div>
 
     <div class="particles" id="particles"></div>
 
+    <!-- ── Card ── -->
     <div class="card">
-      <h1>Oii coelhinha esperta</h1>
+
+      <!-- Counter badge -->
+      <div class="counter-badge">
+        <span id="daysCount">30</span> dias juntos 💕
+      </div>
+
+      <h1>1 mês, coelhinha 🐰</h1>
       <h2 id="subtitle"></h2>
       <div class="divider"></div>
 
+      <!-- Message -->
       <div class="message">
-        <p>
-          Você me deixa diferente. Seu jeito, a forma como você vê o mundo...
-          tudo isso importa demais.
-        </p>
-        <p>
-          Você chegou de repente, sem avisar. E de alguma forma, mudou tudo.
-          Agora você está sempre lá, nos meus pensamentos, nos meus dias.
-        </p>
-        <p class="highlight">E o que sinto por você é real.</p>
-        <p>Você significa muito pra mim. De verdade.</p>
+        <p>Um mês inteiro ao seu lado. Ainda parece que foi ontem que eu me arrisquei e te pedi em namoro.</p>
+        <p>Aprendi que o seu sorriso é a coisa que mais quero ver todo dia. Que falar com você vira a melhor parte do dia sem eu nem perceber.</p>
+        <p class="highlight">E cada dia ao seu lado é melhor que o anterior.</p>
+        <p>Obrigado por escolher ficar. Obrigado por ser você, do jeitinho que você é.</p>
       </div>
 
-      <div class="heart-big">❤️</div>
+      <!-- Timeline -->
+      <div class="timeline">
+        <div class="timeline-title">esse mês com você...</div>
+
+        <!-- ✏️ EDITE OS MOMENTOS AQUI -->
+        <div class="timeline-item">
+          <span class="timeline-icon">💑</span>
+          <span class="timeline-text">Nosso primeiro dia juntos de verdade — 15 de abril</span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-icon">🌙</span>
+          <!-- ✏️ Substitua pelo seu momento favorito -->
+          <span class="timeline-text">Aquele momento que ficou guardado no meu coração</span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-icon">😂</span>
+          <!-- ✏️ Substitua por algo engraçado que aconteceu -->
+          <span class="timeline-text">As risadas que só a gente entende</span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-icon">🌟</span>
+          <span class="timeline-text">30 dias assim — e só o começo</span>
+        </div>
+      </div>
+
+      <span class="heart-big">❤️</span>
 
       <div class="footer">
         <div class="signature">Raposa boba 🦊</div>
 
-        <div
-          class="question-section"
-          id="questionSection"
-          style="display: none"
-        >
-          <h3>Sabia que eu te amo? 💕</h3>
-          <div>
-            <button class="btn btn-yes" id="btnYes">Sabia sim 💕</button>
-            <button class="btn btn-no" id="btnNo">Não...</button>
+        <!-- Easter egg -->
+        <div class="question-section" id="questionSection" style="display:none">
+          <h3>E o próximo mês? 💕</h3>
+          <div class="btn-row">
+            <button class="btn btn-yes" id="btnYes">Com você, claro 💕</button>
+            <button class="btn btn-no" id="btnNo">Hm...</button>
           </div>
-          <div
-            id="response"
-            style="margin-top: 12px; font-size: 0.9rem; color: #ffe6f0"
-          ></div>
+          <div id="response"></div>
         </div>
 
         <button class="btn" id="mainBtn" onclick="showQuestion()">
-          Me faz sorrir ✨
+          quer ficar mais um mês? ✨
         </button>
       </div>
     </div>
 
     <script>
-      // Criar partículas de brilho dinâmicas
-      function createParticles() {
+      /* ── Contador de dias ── */
+      (function () {
+        const start = new Date("2026-04-15T00:00:00");
+        const today = new Date();
+        const diff = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+        document.getElementById("daysCount").textContent = diff > 0 ? diff : 30;
+      })();
+
+      /* ── Partículas ── */
+      (function createParticles() {
         const container = document.getElementById("particles");
-        const particleCount = 30;
-
-        for (let i = 0; i < particleCount; i++) {
-          const particle = document.createElement("div");
-          particle.className = "particle";
-
-          const x = Math.random() * 100;
-          const y = Math.random() * 100;
-          const delay = Math.random() * 3;
-          const duration = 2 + Math.random() * 3;
-
-          particle.style.left = x + "%";
-          particle.style.top = y + "%";
-          particle.style.animationDelay = delay + "s";
-          particle.style.animationDuration = duration + "s";
-
-          container.appendChild(particle);
+        for (let i = 0; i < 30; i++) {
+          const p = document.createElement("div");
+          p.className = "particle";
+          p.style.left = Math.random() * 100 + "%";
+          p.style.top  = Math.random() * 100 + "%";
+          p.style.animationDelay    = Math.random() * 3 + "s";
+          p.style.animationDuration = (2 + Math.random() * 3) + "s";
+          container.appendChild(p);
         }
-      }
+      })();
 
-      createParticles();
-
-      // Criar "sem assédio" flutuantes
+      /* ── Sem assédio flutuantes ── */
       let assedioCount = 0;
       const maxAssedio = 6;
 
       function createSemAssedio() {
-        // Se já tem muitos, espera um pouco
-        if (assedioCount >= maxAssedio) {
-          setTimeout(createSemAssedio, 1000);
-          return;
-        }
-
-        const container = document.body;
-        const count = 2; // Criar apenas 2 por vez
-
+        if (assedioCount >= maxAssedio) { setTimeout(createSemAssedio, 1000); return; }
+        const count = 2;
         for (let i = 0; i < count; i++) {
           if (assedioCount >= maxAssedio) break;
-
-          const assedio = document.createElement("div");
-          assedio.className = "sem-assedio";
-          assedio.textContent = "*sem assédio";
-
+          const el = document.createElement("div");
+          el.className = "sem-assedio";
+          el.textContent = "*sem assédio";
           const x = Math.random() * window.innerWidth;
           const y = Math.random() * (window.innerHeight * 0.7);
-          const delay = Math.random() * 2; // Delay menor
-          const duration = 4 + Math.random() * 2; // Duração menor
-          const moveX = (Math.random() - 0.5) * 100;
-
-          assedio.style.left = x + "px";
-          assedio.style.top = y + "px";
-          assedio.style.animationDelay = delay + "s";
-          assedio.style.animationDuration = duration + "s";
-          assedio.style.setProperty("--moveX", moveX + "px");
-
-          container.appendChild(assedio);
+          const delay    = Math.random() * 2;
+          const duration = 4 + Math.random() * 2;
+          const moveX    = (Math.random() - 0.5) * 100;
+          el.style.left = x + "px";
+          el.style.top  = y + "px";
+          el.style.animationDelay    = delay + "s";
+          el.style.animationDuration = duration + "s";
+          el.style.setProperty("--moveX", moveX + "px");
+          document.body.appendChild(el);
           assedioCount++;
-
-          // Remover após a animação
           setTimeout(() => {
-            assedio.remove();
+            el.remove();
             assedioCount--;
-            // Criar novo após um pequeno delay
             setTimeout(createSemAssedio, 800);
           }, (delay + duration) * 1000);
         }
@@ -832,200 +738,129 @@
 
       createSemAssedio();
 
-      // Efeito de digitação no subtítulo
-      const text = "Tem algo em você que me faz parar e pensar.";
-      const subtitle = document.getElementById("subtitle");
-      let index = 0;
+      /* ── Typewriter ── */
+      const typingText = "1 mês e já não me imagino sem você.";
+      const subtitle   = document.getElementById("subtitle");
+      let idx = 0;
 
       function typeWriter() {
-        if (index < text.length) {
-          subtitle.textContent += text.charAt(index);
-          index++;
-          setTimeout(typeWriter, 50);
+        if (idx < typingText.length) {
+          subtitle.textContent += typingText.charAt(idx++);
+          setTimeout(typeWriter, 55);
         }
       }
 
-      setTimeout(typeWriter, 500);
+      setTimeout(typeWriter, 3600); // começa após intro sumir
 
-      // Scroll reveal para parágrafos
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
+      /* ── Scroll reveal ── */
+      const observer = new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+      );
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, observerOptions);
+      document.querySelectorAll(".message p, .timeline-item").forEach((el) => observer.observe(el));
 
-      document.querySelectorAll(".message p").forEach((p) => {
-        observer.observe(p);
-      });
-
-      // Efeito de mouse ao redor do card
-      const card = document.querySelector(".card");
-      const particles = document.querySelectorAll(".particle");
-      let mouseX = 0;
-      let mouseY = 0;
-      let ticking = false;
-
-      function updateCardPosition() {
-        if (card) {
-          const rect = card.getBoundingClientRect();
-          const centerX = rect.left + rect.width / 2;
-          const centerY = rect.top + rect.height / 2;
-
-          const angleX = (mouseY - centerY) * 0.015;
-          const angleY = (mouseX - centerX) * 0.015;
-
-          card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+      /* ── Confete ── */
+      function createConfetti(x, y) {
+        const colors = ["#ffb6d9", "#ff6b9d", "#ff4b6e", "#ffdfef", "#ffbfda", "#ffe6f0"];
+        for (let i = 0; i < 50; i++) {
+          const c = document.createElement("div");
+          c.className = "confetti";
+          c.style.left       = x + "px";
+          c.style.top        = y + "px";
+          c.style.background = colors[Math.floor(Math.random() * colors.length)];
+          c.style.transform  = `translate(${(Math.random() - 0.5) * 260}px, 0)`;
+          c.style.width      = (6 + Math.random() * 8) + "px";
+          c.style.height     = (6 + Math.random() * 8) + "px";
+          c.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
+          document.body.appendChild(c);
+          setTimeout(() => c.remove(), 3200);
         }
-        ticking = false;
       }
 
-      // Desabilitar efeito 3D em dispositivos móveis
+      /* ── Intro confete ── */
+      setTimeout(() => {
+        createConfetti(window.innerWidth / 2, window.innerHeight / 2);
+      }, 400);
+
+      /* ── 3D card (desktop only) ── */
+      const card   = document.querySelector(".card");
       const isMobile =
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        ) || window.innerWidth <= 768;
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+        window.innerWidth <= 768;
+      let ticking = false;
 
       if (!isMobile) {
         document.addEventListener("mousemove", (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-
-          if (!ticking) {
-            requestAnimationFrame(updateCardPosition);
-            ticking = true;
-          }
-
-          // Partículas atraídas pelo mouse (otimizado)
-          particles.forEach((particle, index) => {
-            if (index % 2 === 0) {
-              // Atualizar apenas metade das partículas por frame
-              const rect = particle.getBoundingClientRect();
-              const particleX = rect.left + rect.width / 2;
-              const particleY = rect.top + rect.height / 2;
-
-              const dx = mouseX - particleX;
-              const dy = mouseY - particleY;
-              const distance = Math.sqrt(dx * dx + dy * dy);
-
-              if (distance < 100) {
-                const angle = Math.atan2(dy, dx);
-                const force = (100 - distance) / 100;
-                particle.style.transform = `translate(${
-                  Math.cos(angle) * force * 20
-                }px, ${Math.sin(angle) * force * 20}px)`;
-              } else {
-                particle.style.transform = "translate(0, 0)";
-              }
-            }
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => {
+            const rect    = card.getBoundingClientRect();
+            const angleX  = (e.clientY - (rect.top + rect.height / 2)) * 0.015;
+            const angleY  = (e.clientX - (rect.left + rect.width / 2))  * 0.015;
+            card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+            ticking = false;
           });
         });
 
         document.addEventListener("mouseleave", () => {
-          if (card) {
-            card.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
-          }
-          particles.forEach((particle) => {
-            particle.style.transform = "translate(0, 0)";
-          });
+          card.style.transform = "perspective(1000px) rotateX(0) rotateY(0)";
         });
-      } else {
-        // Em mobile, remove o transform perspective do card
-        card.style.transform = "none";
       }
 
-      // Confete ao clicar no botão
-      const btn = document.querySelector(".btn");
-      btn.addEventListener("click", function (e) {
-        if (this.textContent !== "Clique aqui se você sorriu") return;
-
-        createConfetti(e.clientX, e.clientY);
-      });
-
-      function createConfetti(x, y) {
-        const colors = ["#ffb6d9", "#ff6b9d", "#ff4b6e", "#ffdfef", "#ffbfda"];
-        const confettiCount = 40;
-
-        for (let i = 0; i < confettiCount; i++) {
-          const confetti = document.createElement("div");
-          confetti.className = "confetti";
-          confetti.style.left = x + "px";
-          confetti.style.top = y + "px";
-          confetti.style.background =
-            colors[Math.floor(Math.random() * colors.length)];
-          confetti.style.transform = `translate(${
-            (Math.random() - 0.5) * 200
-          }px, 0)`;
-          confetti.style.animationDelay = "0s";
-
-          document.body.appendChild(confetti);
-
-          setTimeout(() => confetti.remove(), 3000);
-        }
-      }
-
-      // Função para mostrar pergunta
+      /* ── Mostrar pergunta ── */
       function showQuestion() {
-        const mainBtn = document.getElementById("mainBtn");
-        const questionSection = document.getElementById("questionSection");
-
-        mainBtn.style.display = "none";
-        questionSection.style.display = "block";
-
+        document.getElementById("mainBtn").style.display = "none";
+        const qs = document.getElementById("questionSection");
+        qs.style.display = "block";
         createConfetti(window.innerWidth / 2, window.innerHeight / 2);
       }
 
-      // Pegadinha do botão "Não"
-      const btnNo = document.getElementById("btnNo");
+      /* ── Botão "Não" ── */
+      const btnNo  = document.getElementById("btnNo");
       const btnYes = document.getElementById("btnYes");
-      let noClickCount = 0;
+      let noCount  = 0;
 
-      btnNo.addEventListener("mouseenter", () => {
-        // Movimento apenas horizontal para não sair da tela
+      function escapeButton() {
         const directions = [-1, 1];
-        const direction =
-          directions[Math.floor(Math.random() * directions.length)];
-        const distance = 100 + Math.random() * 100; // Entre 100px e 200px
+        const dir  = directions[Math.floor(Math.random() * 2)];
+        const dist = 80 + Math.random() * 120;
+        btnNo.style.transform = `translateX(${dir * dist}px)`;
+        setTimeout(() => { btnNo.style.transform = "translateX(0)"; }, 700);
+      }
 
-        const newX = direction * distance;
+      // Desktop: foge no hover
+      btnNo.addEventListener("mouseenter", escapeButton);
 
-        btnNo.style.transform = `translateX(${newX}px)`;
+      // Mobile: foge no toque
+      btnNo.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        noCount++;
+        handleNoClick();
+      }, { passive: false });
 
-        // Resetar posição após um tempo
-        setTimeout(() => {
-          btnNo.style.transform = "translateX(0)";
-        }, 800);
-      });
+      btnNo.addEventListener("click", handleNoClick);
 
-      btnNo.addEventListener("click", () => {
-        noClickCount++;
+      function handleNoClick() {
         const response = document.getElementById("response");
-
-        if (noClickCount === 1) {
-          response.textContent = "😔 Mas eu sabia que você sabia...";
-        } else if (noClickCount === 2) {
-          response.textContent = "🥰 Deixa eu mostrar então...";
-        } else if (noClickCount >= 3) {
-          btnNo.textContent = "Sabia sim 💕";
+        if (noCount === 1) {
+          response.textContent = "😔 Mas eu acho que vai...";
+          escapeButton();
+        } else if (noCount === 2) {
+          response.textContent = "🥰 Deixa eu te convencer então...";
+          escapeButton();
+        } else {
+          btnNo.textContent = "Tá bem, com você 💕";
           btnNo.classList.remove("btn-no");
           btnNo.classList.add("btn-yes");
-          response.textContent = "😊 Eu sabia que você sabia... 🦊💕";
-          setTimeout(() => {
-            createConfetti(window.innerWidth / 2, window.innerHeight / 2);
-          }, 300);
+          response.textContent = "😊 Eu sabia que você ia ficar 🦊💕";
+          setTimeout(() => createConfetti(window.innerWidth / 2, window.innerHeight / 2), 200);
         }
-      });
+      }
 
       btnYes.addEventListener("click", () => {
-        const response = document.getElementById("response");
-        response.innerHTML =
-          '💕 E eu amo você demais mesmoooo 🦊<br><span style="font-size: 0.7rem; opacity: 0.7; margin-top: 6px; display: block;">*sem assédio</span>';
+        document.getElementById("response").innerHTML =
+          '💕 Eu também, muito demais 🦊<br><span style="font-size:0.68rem;opacity:0.6;margin-top:4px;display:block">*sem assédio</span>';
         createConfetti(window.innerWidth / 2, window.innerHeight / 2);
       });
     </script>
